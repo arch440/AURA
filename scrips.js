@@ -21,10 +21,6 @@ if(cookiecontent.length > 0) { return true; }
 return false;
 }
 
-function Action() {
-location.href = RedirectURL;
-}
-
 function SetCookie() {
 var exp = '';
 if(DaysToLive > 0) {
