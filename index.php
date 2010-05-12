@@ -37,8 +37,8 @@ What are you up to?
 
 <h3>Lastest News:</h3>
 <?php
-    $db = @mysql_connect("localhost","kwitter","kwitterikwitt");
-    mysql_select_db("kwitter",$db);
+    $db = @mysql_connect($dbserv,$dbuser,$dbpass);
+    mysql_select_db($dbdb,$db);
     $query = "SELECT * FROM kweets ORDER BY id DESC";
     $result = mysql_query($query,$db);
     if(mysql_num_rows($result) != 0) 
