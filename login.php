@@ -1,5 +1,4 @@
 <?php
-@session_start();
 
 $dbserv = "localhost";
 $dbuser = "kwitter";
@@ -16,12 +15,16 @@ if(posted($_POST['username']) && posted($_POST['password'])) {
     $res = mysql_query($q,$db);
     if(mysql_num_rows($res) == 1) {
         $_SESSION['logged_in'] = $_POST['username'];
+        setcookie("aura",$_POST['username'],0);
         mysql_close($db);
         header('Location: index.php');
     } else {
         mysql_close($db);
         login_page();
     }
+} else if(isset($_GET['logout'])) {
+    setcookie("aura","",time() - 3600);
+    login_page();
 }
 
 function posted($var) {
@@ -29,7 +32,7 @@ function posted($var) {
 }
 
 function logged_in() {
-    return isset($_SESSION['logged_in']);
+    return isset($_COOKIE['aura']);
 }
 
 function login_page() {
