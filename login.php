@@ -14,7 +14,6 @@ if(posted($_POST['username']) && posted($_POST['password'])) {
        ,mysql_real_escape_string($_POST['password']));
     $res = mysql_query($q,$db);
     if(mysql_num_rows($res) == 1) {
-        $_SESSION['logged_in'] = $_POST['username'];
         setcookie("aura",$_POST['username'],0);
         mysql_close($db);
         header('Location: index.php');
