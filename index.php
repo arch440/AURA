@@ -5,14 +5,19 @@ if(!logged_in()) {
     login_page();
 } else {
 
+// Connect no matter what
+$db = @mysql_connect($dbserv,$dbuser,$dbpass);
+mysql_select_db($dbdb,$db);
+
+if(isset($_GET['clear'])) {
+    mysql_query("DELETE FROM kweets", $db);
+}
+
 if(posted($_POST['status'])) {
-    $db = @mysql_connect($dbserv,$dbuser,$dbpass);
-    mysql_select_db($dbdb,$db);
     $status = $_POST['status'];
     $user = $_COOKIE['aura'];
     $q = "INSERT INTO kweets VALUES('$status','$user','0')";
     mysql_query($q,$db);
-    mysql_close($db);
 }
 
 ?>
@@ -25,7 +30,10 @@ if(posted($_POST['status'])) {
     </head>
     <body>
     <div id="main">
-    <h2><a href="index.php">Kwitter</a> | <a href="login.php?logout">Log out</a></h2>
+    <h2><a href="index.php">Kwitter</a> | 
+        <a href="login.php?logout">Log out</a> |
+        <a href="index.php?clear">Clear all kweets</a>
+    </h2>
     What are you up to, <?php echo $_COOKIE['aura']; ?>?
     <form action="index.php" method="post">
     <textarea name="status" id="status" rows="10" cols="800"></textarea><br />
@@ -34,8 +42,6 @@ if(posted($_POST['status'])) {
 
     <h3>Lastest News:</h3>
     <?php
-        $db = @mysql_connect($dbserv,$dbuser,$dbpass);
-        mysql_select_db($dbdb,$db);
         $query = "SELECT * FROM kweets ORDER BY id DESC";
         $result = mysql_query($query,$db);
         if(mysql_num_rows($result) != 0) 
@@ -50,4 +56,5 @@ if(posted($_POST['status'])) {
 
     echo "</div></body></html>";
 }
+mysql_close($db);
 ?>
