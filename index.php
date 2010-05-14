@@ -25,7 +25,7 @@ if(posted($_POST['status'])) {
     </head>
     <body>
     <div id="main">
-    <h2>Kwitter | <a href="login.php?logout">Log out</a></h2>
+    <h2><a href="index.php">Kwitter</a> | <a href="login.php?logout">Log out</a></h2>
     What are you up to, <?php echo $_COOKIE['aura']; ?>?
     <form action="index.php" method="post">
     <textarea name="status" id="status" rows="10" cols="800"></textarea><br />
