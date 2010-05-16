@@ -32,7 +32,7 @@ if(posted($_POST['status'])) {
     <div id="main">
     <h2><a href="index.php">Kwitter</a> | 
         <a href="login.php?logout">Log out</a> |
-        <a href="index.php?clear">Clear all kweets</a>
+        <a href="login.php?delete">Delete Account</a>
     </h2>
     What are you up to, <?php echo $_COOKIE['aura']; ?>?
     <form action="index.php" method="post">
@@ -56,5 +56,5 @@ if(posted($_POST['status'])) {
 
     echo "</div></body></html>";
 }
-mysql_close($db);
+@mysql_close($db);
 ?>
