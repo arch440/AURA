@@ -12,10 +12,8 @@ if(isset($_GET['cookie'])) {
     echo str_replace("\r\n","<br />", $c);
 } else {
 ?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" 
-    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
 <html>
-<head><title>Supercommunity</title></head>
+<head><title>Kwitter</title></head>
 <body style="background-color: #BBBBBB;" >
 <div style="width: 800px; min-height: 400px; 
             margin-left: auto; margin-right: auto; 
