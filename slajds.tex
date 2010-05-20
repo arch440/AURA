@@ -98,17 +98,33 @@ if(mysql_num_rows($result) != 0) {
 \section{Results}
 
 \begin{frame}{Showtime!}
-    \only<1>{\includegraphics[width=\textwidth]{signup.png}}
-    \only<2>{\includegraphics[width=\textwidth]{firstpost.png}}
-    \only<3>{\includegraphics[width=\textwidth]{theft.png}}
-    \only<4>{\includegraphics[width=\textwidth]{csrf.png}}
-    \only<5>{\includegraphics[width=\textwidth]{forgeinject.png}}
-    \only<6>{\includegraphics[width=\textwidth]{forgery.png}}
-    \only<7>{\includegraphics[width=.4\textwidth]{fooled.png}}
+    \only<1>{Signup \\ \includegraphics[width=\textwidth]{signup.png}}
+    \only<2>{First post \\ \includegraphics[width=\textwidth]{firstpost.png}}
+    \only<3>{Cookie Theft \\ \includegraphics[width=\textwidth]{theft.png}}
+    \only<4>{CSRF \includegraphics[width=\textwidth]{csrf.png}}
+    \only<5>{Redirecting \includegraphics[width=\textwidth]{forgeinject.png}}
+    \only<6>{The forged site \includegraphics[width=\textwidth]{forgery.png}}
+    \only<7>{Possible result after entering info on forged site \\
+             \includegraphics[width=.4\textwidth]{fooled.png}}
+\end{frame}
+
+\begin{frame}{Attack success}
+    \begin{itemize}
+        \item
+            The cookie attack is impossible to notice at first. When stolen
+            however, it becomes rather obvious that you have been fooled, which
+            all subjects noticed.
+        \item
+            CSRF was way more successful than we thought, almost none of the
+            subjects looked where the link actually led before clicking.
+        \item
+            Domain forgery was not as successful, but this was partly because
+            the URL ended in "attack.php".
+    \end{itemize}
 \end{frame}
 
 \begin{frame}{Response}
-    We have tested on X persons (mostly CS students)
+    We have tested on 8 persons (mostly CS students)
     \begin{itemize}
         \item None of the subjects realized the domain forgery until it was too
               late.
@@ -120,6 +136,13 @@ if(mysql_num_rows($result) != 0) {
 \end{frame}
 
 \section{Conclusion}
+
+\begin{frame}{Protection}
+    \begin{itemize}
+        \item Browser protection
+        \item Alarm the user!
+    \end{itemize}
+\end{frame}
 
 \begin{frame}{Be careful!}
     \begin{itemize}
